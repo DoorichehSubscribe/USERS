@@ -1,1 +1,179 @@
-dmxlc3M6Ly85OWRiYWRlZi01MWExLTRhYzktYjY0Yy01ZTJlMWM2ODQyOTBAdHIwMC5uZXJkeWxlYXJuZXIuY2xpY2s6MTk2Njc/ZW5jcnlwdGlvbj1ub25lJmZsb3c9eHRscy1ycHJ4LXZpc2lvbiZzZWN1cml0eT1yZWFsaXR5JnNuaT15YWhvby5jb20mZnA9Y2hyb21lJnBiaz1JaXVJaWdodkRzb3Iydi12YjVzM0lKYk5pcXdMdzU2OGF1aXFvWHhjN0ZNJnR5cGU9dGNwJmhlYWRlclR5cGU9bm9uZSNMZXRzJTIwZG8lMjB0aGlzJTdDTSU3QzIwMjMtMTItMTMlMjAyJTNBMjklM0EwCnZsZXNzOi8vNzM3ODMxM2QtMmFmMy00ZDM5LWI2NWEtYzUwYmZlMTliNzYwQHRyMDAubmVyZHlsZWFybmVyLmNsaWNrOjI5OTQ4P2VuY3J5cHRpb249bm9uZSZmbG93PXh0bHMtcnByeC12aXNpb24mc2VjdXJpdHk9cmVhbGl0eSZzbmk9eWFob28uY29tJmZwPWNocm9tZSZwYms9WjNaR25BT2RLa3pKMDdnUl83XzBrOV9pVFRGUDZwYURPcnF4MXJOMkxVNCZ0eXBlPXRjcCZoZWFkZXJUeXBlPW5vbmUjWSU3Q1V1JTdDMjAyMy0xMi0xMyUyMDIlM0EyOSUzQTA
+{
+    "dns": {
+      "independent_cache": true,
+      "rules": [
+        {
+          "domain": [
+            "detest.dooricheh.com",
+"mcikiller.dooricheh.com"
+          ],
+          "server": "dns-direct"
+        }
+      ],
+      "servers": [
+        {
+          "address": "tcp://1.1.1.1",
+          "address_resolver": "dns-direct",
+          "strategy": "prefer_ipv4",
+          "tag": "dns-remote"
+        },
+        {
+          "address": "local",
+          "address_resolver": "dns-local",
+          "detour": "direct",
+          "strategy": "prefer_ipv4",
+          "tag": "dns-direct"
+        },
+        {
+          "address": "local",
+          "detour": "direct",
+          "tag": "dns-local"
+        },
+        {
+          "address": "rcode://success",
+          "tag": "dns-block"
+        }
+      ]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "listen_port": 6450,
+        "override_address": "8.8.8.8",
+        "override_port": 53,
+        "tag": "dns-in",
+        "type": "direct"
+      },
+       { 
+          "type": "tun", 
+          "interface_name": "ipv4-tun", 
+          "mtu": 1500, 
+          "inet4_address": "172.19.0.1/30", 
+          "inet6_address": "fdfe:dcba:9876::1/126", 
+          "auto_route": true, 
+          "strict_route": true, 
+          "endpoint_independent_nat": true, 
+          "stack": "system", 
+          "sniff": true 
+        },  
+  {
+        "domain_strategy": "prefer_ipv4",
+        "listen": "127.0.0.1",
+        "listen_port": 2080,
+        "sniff": true,
+        "sniff_override_destination": false,
+        "tag": "mixed-in",
+        "type": "mixed"
+      }
+    ],
+    "log": {
+      "level": "panic"
+    },
+    "outbounds": [
+    {
+            "type": "selector",
+            "tag": "DOORICHEH",
+            "outbounds": [
+"Germany 🇩🇪",
+"Turkey 🇹🇷"
+            ]
+          },   
+{
+        "down_mbps": 80,
+        "obfs": {
+          "password": "hyspass",
+          "type": "salamander"
+        },
+        "password": "dehys:dehys1234",
+        "server": "detest.dooricheh.com",
+        "server_port": 443,
+        "tls": {
+          "alpn": [
+            "h3"
+          ],
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIIEpjCCA46gAwIBAgIUXKG1H0aSOlFAhSuU7EgiQ/9/rwEwDQYJKoZIhvcNAQEL\nBQAwgYsxCzAJBgNVBAYTAlVTMRkwFwYDVQQKExBDbG91ZEZsYXJlLCBJbmMuMTQw\nMgYDVQQLEytDbG91ZEZsYXJlIE9yaWdpbiBTU0wgQ2VydGlmaWNhdGUgQXV0aG9y\naXR5MRYwFAYDVQQHEw1TYW4gRnJhbmNpc2NvMRMwEQYDVQQIEwpDYWxpZm9ybmlh\nMB4XDTIzMTEyMDEwNTIwMFoXDTM4MTExNjEwNTIwMFowYjEZMBcGA1UEChMQQ2xv\ndWRGbGFyZSwgSW5jLjEdMBsGA1UECxMUQ2xvdWRGbGFyZSBPcmlnaW4gQ0ExJjAk\nBgNVBAMTHUNsb3VkRmxhcmUgT3JpZ2luIENlcnRpZmljYXRlMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEArlTyX1JujKD4jJ/nNxDY+PD3mt3Xr2n/kK0D\n1ywSxX904acbeFZ/1Tg8daRrbPGc94lE65WcowUgYeW+zm+SL/qzchv3G+X7VMWP\nO2YjiAJeI89TNJLQ0wAjiLtBDLcXe2j4HsYhlDXs/AE/EESHGBDgRoOfjywcyucj\n8gKHqBttYIBniyQJV6mZiP5rggGXl97xEBduGUQnnane8LWCK2clg1Ht05Mdyrvc\nf1T6FytPYCvXcXbHt1d2NH7AK1a57S0Adhgk99J8aJzIGwu0CjIs8YtA5mvgvlLw\nn+Ecqo0EP1TIQds0bcUjd7zI8d/4FCTb7BPkDLdj8aayPqIJBwIDAQABo4IBKDCC\nASQwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcD\nATAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBRYZg+lbAUp7ENq/3IoRDSX7EcfkDAf\nBgNVHSMEGDAWgBQk6FNXXXw0QIep65TbuuEWePwppDBABggrBgEFBQcBAQQ0MDIw\nMAYIKwYBBQUHMAGGJGh0dHA6Ly9vY3NwLmNsb3VkZmxhcmUuY29tL29yaWdpbl9j\nYTApBgNVHREEIjAggg8qLmRvb3JpY2hlaC5jb22CDWRvb3JpY2hlaC5jb20wOAYD\nVR0fBDEwLzAtoCugKYYnaHR0cDovL2NybC5jbG91ZGZsYXJlLmNvbS9vcmlnaW5f\nY2EuY3JsMA0GCSqGSIb3DQEBCwUAA4IBAQAql0Y4LcHy+mw0SVADnran6FxX/Rp2\nbpar9dOXLJe7MhiWXK8K91iyHjldtqj2VHjSCYUXOEjYZ7u6/3l30SjaOCMaFdAG\nLulaHCRsjPXF1BtpSYdrF6vhEkClDjlKx2iy+Wt9LYHDqIIh2DPLFMR7JL/imbsd\nRrysmqjLCrPZCGc1VAbeTXkCkYh4wxLWSlM1jYDXLqsUMB5cHec9QmRkkQ2snbdP\nfAnFEz2awhwRh1zAwmQJMSR6305bkwFhw+LSIG61y2IE1REAM/Rld879GF4Yon7f\n4r5Re+zQxkWRimUtpxMwpWgruX0IzFq4Q2Ex1CXF+/UX+HXhv7C7NJGV\n-----END CERTIFICATE-----",
+          "enabled": true,
+          "insecure": false,
+          "server_name": "dehys2.dooricheh.com"
+        },
+        "up_mbps": 40,
+        "type": "hysteria2",
+        "domain_strategy": "",
+        "tag": "Germany 🇩🇪"
+      },
+{
+        "down_mbps": 80,
+        "obfs": {
+          "password": "hyspass",
+          "type": "salamander"
+        },
+        "password": "trhys:trhys1234",
+        "server": "mcikiller.dooricheh.com",
+        "server_port": 443,
+        "tls": {
+          "alpn": [
+            "h3"
+          ],
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIIEpjCCA46gAwIBAgIUXKG1H0aSOlFAhSuU7EgiQ/9/rwEwDQYJKoZIhvcNAQEL\nBQAwgYsxCzAJBgNVBAYTAlVTMRkwFwYDVQQKExBDbG91ZEZsYXJlLCBJbmMuMTQw\nMgYDVQQLEytDbG91ZEZsYXJlIE9yaWdpbiBTU0wgQ2VydGlmaWNhdGUgQXV0aG9y\naXR5MRYwFAYDVQQHEw1TYW4gRnJhbmNpc2NvMRMwEQYDVQQIEwpDYWxpZm9ybmlh\nMB4XDTIzMTEyMDEwNTIwMFoXDTM4MTExNjEwNTIwMFowYjEZMBcGA1UEChMQQ2xv\ndWRGbGFyZSwgSW5jLjEdMBsGA1UECxMUQ2xvdWRGbGFyZSBPcmlnaW4gQ0ExJjAk\nBgNVBAMTHUNsb3VkRmxhcmUgT3JpZ2luIENlcnRpZmljYXRlMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEArlTyX1JujKD4jJ/nNxDY+PD3mt3Xr2n/kK0D\n1ywSxX904acbeFZ/1Tg8daRrbPGc94lE65WcowUgYeW+zm+SL/qzchv3G+X7VMWP\nO2YjiAJeI89TNJLQ0wAjiLtBDLcXe2j4HsYhlDXs/AE/EESHGBDgRoOfjywcyucj\n8gKHqBttYIBniyQJV6mZiP5rggGXl97xEBduGUQnnane8LWCK2clg1Ht05Mdyrvc\nf1T6FytPYCvXcXbHt1d2NH7AK1a57S0Adhgk99J8aJzIGwu0CjIs8YtA5mvgvlLw\nn+Ecqo0EP1TIQds0bcUjd7zI8d/4FCTb7BPkDLdj8aayPqIJBwIDAQABo4IBKDCC\nASQwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcD\nATAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBRYZg+lbAUp7ENq/3IoRDSX7EcfkDAf\nBgNVHSMEGDAWgBQk6FNXXXw0QIep65TbuuEWePwppDBABggrBgEFBQcBAQQ0MDIw\nMAYIKwYBBQUHMAGGJGh0dHA6Ly9vY3NwLmNsb3VkZmxhcmUuY29tL29yaWdpbl9j\nYTApBgNVHREEIjAggg8qLmRvb3JpY2hlaC5jb22CDWRvb3JpY2hlaC5jb20wOAYD\nVR0fBDEwLzAtoCugKYYnaHR0cDovL2NybC5jbG91ZGZsYXJlLmNvbS9vcmlnaW5f\nY2EuY3JsMA0GCSqGSIb3DQEBCwUAA4IBAQAql0Y4LcHy+mw0SVADnran6FxX/Rp2\nbpar9dOXLJe7MhiWXK8K91iyHjldtqj2VHjSCYUXOEjYZ7u6/3l30SjaOCMaFdAG\nLulaHCRsjPXF1BtpSYdrF6vhEkClDjlKx2iy+Wt9LYHDqIIh2DPLFMR7JL/imbsd\nRrysmqjLCrPZCGc1VAbeTXkCkYh4wxLWSlM1jYDXLqsUMB5cHec9QmRkkQ2snbdP\nfAnFEz2awhwRh1zAwmQJMSR6305bkwFhw+LSIG61y2IE1REAM/Rld879GF4Yon7f\n4r5Re+zQxkWRimUtpxMwpWgruX0IzFq4Q2Ex1CXF+/UX+HXhv7C7NJGV\n-----END CERTIFICATE-----",
+          "enabled": true,
+          "insecure": false,
+          "server_name": "newhys.dooricheh.com"
+        },
+        "up_mbps": 40,
+        "type": "hysteria2",
+        "domain_strategy": "",
+        "tag": "Turkey 🇹🇷"
+      },
+      {
+        "tag": "direct",
+        "type": "direct"
+      },
+      {
+        "tag": "bypass",
+        "type": "direct"
+      },
+      {
+        "tag": "block",
+        "type": "block"
+      },
+      {
+        "tag": "dns-out",
+        "type": "dns"
+      }
+    ],
+    "route": {
+      "auto_detect_interface": true,
+      "rules": [
+        {
+          "outbound": "dns-out",
+          "port": [
+            53
+          ]
+        },
+      
+        {
+          "inbound": [
+            "dns-in"
+          ],
+          "outbound": "dns-out"
+        },
+        {
+          "geoip": [
+            "ir"
+          ],
+          "outbound": "bypass"
+        },
+        {
+          "ip_cidr": [
+            "224.0.0.0/3",
+            "ff00::/8"
+          ],
+          "outbound": "block",
+          "source_ip_cidr": [
+            "224.0.0.0/3",
+"ff00::/8"
+          ]
+        }
+      ]
+    }
+  }
