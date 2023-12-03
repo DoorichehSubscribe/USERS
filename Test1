@@ -74,7 +74,7 @@
             "type": "selector",
             "tag": "DOORICHEH",
             "outbounds": [
-"GERMANY 🇩🇪",
+"Germany 🇩🇪",
 "Turkey 🇹🇷"
            ]
           },
@@ -100,7 +100,7 @@
         "up_mbps": 40,
         "type": "hysteria2",
         "domain_strategy": "",
-        "tag": "GERMANY 🇩🇪"
+        "tag": "Germany 🇩🇪"
       },
 {
         "down_mbps": 80,
